@@ -1,5 +1,6 @@
 # mariah_carey_christmas
 
+# 참고시 '출처' 명시 부탁드립니다.
 
 ### Mariah Carey의 'All I want for Christmas is you'의 연간 음원 순위와 주요 국가의 순위, 기후 간의 상관관계를 확인하고자 한다.
 
