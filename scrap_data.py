@@ -114,6 +114,12 @@ def render_page(url):
     return r
 
 
+# 화씨-섭씨 변환 함수
+def trans(f):
+    c = (float(f) - 32) * 5 / 9
+    return str(round(c, 2))
+
+
 # 날씨 데이터 저장
 def addClimate(country):
     
@@ -125,9 +131,9 @@ def addClimate(country):
         r = render_page(url)
 
         soup = BeautifulSoup(r, "lxml")
-        container = soup.find('lib-city-history-observation')
-        check = container.find('tbody')
-        table = check.find_all('table')[1]
+        container = soup.select_one('lib-city-history-observation')
+        check = container.select_one('tbody')
+        table = check.select('table')[1]
         td = table.select('td:nth-of-type(2)')
         
         temp = []
@@ -138,10 +144,10 @@ def addClimate(country):
 
                 if d == '2011' + '-' + '2':
                     if i > 18:
-                        temp.append(data.text.strip())
+                        temp.append(trans(data.text))
 
                 elif i > 0:
-                    temp.append(data.text.strip())
+                    temp.append(trans(data.text))
 
 
         except:
